@@ -8,7 +8,7 @@ function getAllTasks() {
 async function createTask(taskData) {
     const [taskId] = await db('tasks').insert(taskData);
 
-    return db('tasks').where({ id: taskId }).first()
+    return db('tasks').where({ task_id: taskId }).first()
 }
 
 module.exxports = {

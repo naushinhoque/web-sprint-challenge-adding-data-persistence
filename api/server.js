@@ -8,22 +8,22 @@ const server = express()
 
 server.use(express.json())
 
-// server.use('*', (req, res) => {
-//     res.json({ api: 'project up'})
-// })
+server.use('/api/projects', projectRouter)
 
-// server.use('*', (req, res) => {
-//     res.json({ api: 'resource up'})
-// })
+server.use('/api/resources', resourceRouter)
 
-// server.use('*', (req, res) => {
-//     res.json({ api: 'task up'})
-// })
+server.use('/api/tasks', taskRouter)
 
-server.use('/api/project', projectRouter)
+server.use('*', (req, res) => {
+    res.json({ api: 'project up'})
+})
 
-server.use('/api/resource', resourceRouter)
+server.use('*', (req, res) => {
+    res.json({ api: 'resource up'})
+})
 
-server.use('/api/task', taskRouter)
+server.use('*', (req, res) => {
+    res.json({ api: 'task up'})
+})
 
 module.exports = server 

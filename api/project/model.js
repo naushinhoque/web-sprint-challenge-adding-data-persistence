@@ -5,13 +5,30 @@ function getAllProjects() {
     return db('projects').select('*')  
 }
 
+// function createProject(projectData) {
+//     const [projectId] = db('projects').insert(projectData);
+
+//     return db('projects').where({ project_id: projectId }).first()
+// }
+
+// function createProject(projectData) {
+//     return db('projects')
+//         .insert(projectData)
+//         .then(([project_id]) => {
+//             return 
+//         })
+// }
 async function createProject(projectData) {
-    const [projectId] = await db('projects').insert(projectData);
+    return db('projects')
+      .insert(projectData)
+      .then(([projectId]) => 
+        db('projects')
+          .where({ project_id: projectId })
+          .first()
+      );
+  }
 
-    return db('projects').where({ id: projectId }).first()
-}
-
-module.exxports = {
+module.exports = {
     getAllProjects,
     createProject,
 }
