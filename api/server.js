@@ -8,6 +8,18 @@ const server = express()
 
 server.use(express.json())
 
+// server.use('*', (req, res) => {
+//     res.json({ api: 'project up'})
+// })
+
+// server.use('*', (req, res) => {
+//     res.json({ api: 'resource up'})
+// })
+
+// server.use('*', (req, res) => {
+//     res.json({ api: 'task up'})
+// })
+
 server.use('/api/project', projectRouter)
 
 server.use('/api/resource', resourceRouter)
