@@ -1,4 +1,3 @@
-// build your `/api/tasks` router here
 const router = require('express').Router()
 const { getAllTasks, createTask } = require('./model')
   
@@ -11,14 +10,13 @@ router.get('/', async (req, res, next) => {
     }
   });
 
-  router.post('/', async (req, res, next) => {
-    try {
-        const newTask = await createTask(req.body)
-        res.status(201).json(newTask)
-    } catch (err) {
-        next(err)
-    }
-  });
+router.post('/', (req, res, next) => {
+    createTask(req.body)
+        .then(task => {
+            res.status(201).json(task)
+        }) 
+        .catch(next)
+})
 
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).json({

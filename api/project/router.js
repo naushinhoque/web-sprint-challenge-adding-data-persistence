@@ -1,6 +1,5 @@
-// build your `/api/projects` router here
 const router = require('express').Router()
-const { createProject, findById, getAllProjects } = require('./model')
+const { createProject, getAllProjects } = require('./model')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -11,14 +10,14 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:project_id', async (req, res, next) => {
-    try {
-        const project = await findById(req.params.project_id)
-        res.status(200).json(project)
-    } catch (err) {
-        next(err)
-    }
-})
+// router.get('/:project_id', async (req, res, next) => {
+//     try {
+//         const project = await findById(req.params.project_id)
+//         res.status(200).json(project)
+//     } catch (err) {
+//         next(err)
+//     }
+// })
 // router.post('/', async (req, res, next) => {
 //     try {
 //         const newProject = await createProject(req.body)
@@ -35,8 +34,6 @@ router.post('/', (req, res, next) => {
         })
         .catch(next)
 })
-
-
 
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).json({
