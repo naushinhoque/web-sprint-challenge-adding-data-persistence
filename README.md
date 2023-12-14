@@ -48,7 +48,7 @@ Build the migration(s) in Knex inside the `data/migrations` folder using appropr
 
 - [ ] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
 
-  - [ ] `resource_id` - primary key
+  - [ x] `resource_id` - primary key
   - [ ] `resource_name` - required and unique
   - [ ] `resource_description` - optional
 
